@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img src="../media/avelogo.png" alt="Averos Logo" style="width:40px ;">
+        </div>
+        <div class="sidebar-brand-text mx-3">e-Presensi</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="../index.html">
+          <i class="fas fa-fw fa-house-user"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+          aria-controls="collapseOne">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Siswa</span>
+        </a>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="./tambahsiswa.html">Tambah Siswa</a>
+            <a class="collapse-item active" href="./siswa.html">Data Siswa</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Absensi</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="./absensi.html">Buat Absensi</a>
+            <a class="collapse-item" href="./rekap.html">Rekap Kehadiran</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <ul class="navbar-nav ml-auto">
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
+                <img class="img-profile rounded-circle" src="../media/user-profile.svg">
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="d-sm-flex align-items-center mb-4">
+            <h1 class="h3 mb-0 text-primary font-weight-bold">Data Siswa</h1>
+          </div>
+
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>NISN</th>
+                      <th>Kelas</th>
+                      <th>Grade</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody">
+                    <!-- From Javascript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Proyek Penguatan Profil Pelajar Pancasila &copy; 2022</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+  </div>
+
+  <!-- Modal View Data -->
+  <div class="modal fade" id="modalViewData" data-backdrop="static" tabindex="-1" aria-labelledby="modalViewData"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fs-5" id="exampleModalLabel">DETAIL SISWA</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <img id="viewUrlFoto" src="" alt="foto siswa" height="200" width="200" style="object-fit: cover;"
+                class="rounded">
+            </div>
+            <div class="col">
+              <div>
+                <label class="font-weight-bold">Nama Lengkap:</label>
+                <p id="viewNama"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">NISN:</label>
+                <p id="viewNisn"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">NIPD:</label>
+                <p id="viewNipd"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">Jenis Kelamin:</label>
+                <p id="viewJk"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">Tempat Lahir:</label>
+                <p id="viewTempatLahir"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">Tanggal Lahir:</label>
+                <p id="viewTanggalLahir"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">Alamat:</label>
+                <p id="viewAlamat"></p>
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                <label class="font-weight-bold">Kelas:</label>
+                <p id="viewKelas"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">Grade:</label>
+                <p id="viewGrade"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">Angkatan:</label>
+                <p id="viewAngkatan"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">Peminatan:</label>
+                <p id="viewPeminatan"></p>
+              </div>
+              <div>
+                <label class="font-weight-bold">Club:</label>
+                <p id="viewClub"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Update Data -->
+  <div class="modal fade" id="modalUpdateData" data-backdrop="static" tabindex="-1" aria-labelledby="modalUpdateData"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fs-5" id="exampleModalLabel">UPDATE DATA SISWA</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <img id="prev-foto" src="" alt="" height="200" width="200" style="object-fit: cover;" class="rounded">
+              <div class="mb-3">
+                <label for="prev-foto-input" class="font-weight-bold">Upload Foto</label>
+                <input type="file" class="form-control-file" id="prev-foto-input" aria-describedby="prev-foto-input">
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="update-nama" class="font-weight-bold">Nama Lengkap</label>
+                <input type="text" class="form-control" id="update-nama" aria-describedby="update-nama">
+              </div>
+              <div class="mb-3">
+                <label for="update-nisn" class="font-weight-bold">NISN</label>
+                <input type="number" class="form-control" id="update-nisn" aria-describedby="update-nisn">
+              </div>
+              <div class="mb-3">
+                <label for="update-nipd" class="font-weight-bold">NIPD</label>
+                <input type="number" class="form-control" id="update-nipd" aria-describedby="update-nipd">
+              </div>
+              <div class="mb-3">
+                <label for="update-jk" class="font-weight-bold">Jenis Kelamin</label>
+                <select class="form-control" aria-label="update-jk" id="update-jk">
+                  <option value="p">Pria</option>
+                  <option value="w">Wanita</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="update-tempat-lahir" class="font-weight-bold">Tempat Lahir</label>
+                <input type="text" class="form-control" id="update-tempat-lahir" aria-describedby="update-tempat-lahir">
+              </div>
+              <div class="mb-3">
+                <label for="update-tanggal-lahir" class="font-weight-bold">Tanggal Lahir</label>
+                <input type="date" class="form-control" id="update-tanggal-lahir"
+                  aria-describedby="update-tanggal-lahir">
+              </div>
+              <div class="mb-3">
+                <label for="update-alamat" class="font-weight-bold">Alamat</label>
+                <textarea class="form-control" id="update-alamat" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="update-kelas" class="font-weight-bold">Kelas</label>
+                <select class="form-control" aria-label="update-kelas" id="update-kelas">
+                  <option value="x">X</option>
+                  <option value="xi">XI</option>
+                  <option value="xii">XII</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="update-grade" class="font-weight-bold">Grade</label>
+                <select class="form-control" aria-label="update-grade" id="update-grade">
+                  <option value="a">A</option>
+                  <option value="b">B</option>
+                  <option value="c">C</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="update-angkatan" class="font-weight-bold">Angkatan</label>
+                <input type="number" class="form-control" id="update-angkatan" aria-describedby="update-angkatan">
+              </div>
+              <div class="mb-3">
+                <label for="update-peminatan" class="font-weight-bold">Peminatan</label>
+                <input type="text" class="form-control" id="update-peminatan" aria-describedby="update-peminatan">
+              </div>
+              <div class="mb-3">
+                <label for="update-club" class="font-weight-bold">Club</label>
+                <input type="text" class="form-control" id="update-club" aria-describedby="update-club">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-success updateBtn" data-dismiss="modal">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../js/sb-admin-2.min.js"></script>
+
+  <!-- Sweet Alert 2 -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="./siswa.js" type="module"></script>
+</body>
+
+</html>

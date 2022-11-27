@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img src="../media/avelogo.png" alt="Averos Logo" style="width:40px ;">
+        </div>
+        <div class="sidebar-brand-text mx-3">e-Presensi</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="../index.html">
+          <i class="fas fa-fw fa-house-user"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+          aria-controls="collapseOne">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Siswa</span>
+        </a>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item active" href="./tambahsiswa.html">Tambah Siswa</a>
+            <a class="collapse-item" href="./siswa.html">Data Siswa</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Absensi</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="./absensi.html">Buat Absensi</a>
+            <a class="collapse-item" href="./rekap.html">Rekap Kehadiran</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <ul class="navbar-nav ml-auto">
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
+                <img class="img-profile rounded-circle" src="../media/user-profile.svg">
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="d-sm-flex align-items-center mb-4">
+            <h1 class="h3 mb-0 text-primary font-weight-bold">Tambah Data Siswa</h1>
+          </div>
+          <form id="addStudent">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="nama" class="form-label text-gray-800 font-weight-bold">Nama Lengkap<span
+                      class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="nama" aria-describedby="nama" autocomplete="off" required>
+                </div>
+                <div class="mb-3">
+                  <label for="nisn" class="form-label text-gray-800 font-weight-bold">NISN<span
+                      class="text-danger">*</span></label>
+                  <input type="number" class="form-control" id="nisn" aria-describedby="nisn" autocomplete="off"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="nipd" class="form-label text-gray-800 font-weight-bold">NIPD<span
+                      class="text-danger">*</span></label>
+                  <input type="number" class="form-control" id="nipd" aria-describedby="nipd" autocomplete="off"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="jk" class="form-label text-gray-800 font-weight-bold">Jenis Kelamin<span
+                      class="text-danger">*</span></label>
+                  <select class="form-control" aria-label="jk" id="jk">
+                    <option value="p">Pria</option>
+                    <option value="w">Wanita</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="tempat-lahir" class="form-label text-gray-800 font-weight-bold">Tempat Lahir<span
+                      class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="tempat-lahir" aria-describedby="tempat-lahir"
+                    autocomplete="off" required>
+                </div>
+                <div class="mb-3">
+                  <label for="tanggal-lahir" class="form-label text-gray-800 font-weight-bold">Tanggal Lahir<span
+                      class="text-danger">*</span></label>
+                  <input type="date" class="form-control" id="tanggal-lahir" aria-describedby="tanggal-lahir"
+                    autocomplete="off" required>
+                </div>
+                <div class="mb-3">
+                  <label for="alamat" class="form-label text-gray-800 font-weight-bold">Alamat</label>
+                  <textarea class="form-control" id="alamat" rows="3" required></textarea>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="kelas" class="form-label text-gray-800 font-weight-bold">Kelas<span
+                      class="text-danger">*</span></label>
+                  <select class="form-control" aria-label="kelas" id="kelas">
+                    <option value="x">X</option>
+                    <option value="xi">XI</option>
+                    <option value="xii">XII</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="grade" class="form-label text-gray-800 font-weight-bold">Grade<span
+                      class="text-danger">*</span></label>
+                  <select class="form-control" aria-label="grade" id="grade">
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="angkatan" class="form-label text-gray-800 font-weight-bold">Angkatan<span
+                      class="text-danger">*</span></label>
+                  <input type="number" class="form-control" id="angkatan" aria-describedby="angkatan" autocomplete="off"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="peminatan" class="form-label text-gray-800 font-weight-bold">Peminatan<span
+                      class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="peminatan" aria-describedby="peminatan" autocomplete="off"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="club" class="form-label text-gray-800 font-weight-bold">Club<span
+                      class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="club" aria-describedby="club" autocomplete="off" required>
+                </div>
+                <div class="mb-3">
+                  <label for="club" class="form-label text-gray-800 font-weight-bold">Upload Foto</label>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="foto">
+                    <label class="custom-file-label" for="customFile">Upload Foto</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col text-right">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Proyek Penguatan Profil Pelajar Pancasila &copy; 2022</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+  </div>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Sweet Alert 2 -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../js/sb-admin-2.min.js"></script>
+  <script src="./tambahsiswa.js" type="module"></script>
+</body>
+
+</html>
